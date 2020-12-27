@@ -41,7 +41,7 @@ func (g *gitschema) InjectSourceEarly() *ast.Source {
 	client := GitAuth()
 	fs, err := gitfs.New(context.Background(), g.Config.GitPath, gitfs.OptClient(client))
 	if err != nil {
-		log.Fatalln("Failed to open git path")
+		log.Fatalln("Failed to open git path: " + err.Error())
 	}
 
 	// access the file
@@ -53,7 +53,7 @@ func (g *gitschema) InjectSourceEarly() *ast.Source {
 	// read the file
 	schemaRaw, err := ioutil.ReadAll(f)
 	if err != nil {
-		log.Fatalln("Failed to read the schema file")
+		log.Fatalln("Failed to read the schema file: " + err.Error())
 	}
 
 	// return the source
