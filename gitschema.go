@@ -47,7 +47,7 @@ func (g *gitschema) InjectSourceEarly() *ast.Source {
 	// access the file
 	f, err := fs.Open(g.Config.Schema)
 	if err != nil {
-		log.Fatalln("Failed to open schema file")
+		log.Fatalln("Failed to open schema file: " + err.Error())
 	}
 
 	// read the file
